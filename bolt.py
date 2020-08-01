@@ -3,6 +3,9 @@ from boltiot import Bolt
 
 frame_size=10
 mfactor=3
+
+online=False
+temp="Not Recorded"
 open=False
 
 D_ID = input("Bolt device ID:")
@@ -24,8 +27,8 @@ def get_temp():
     if not tempd['success']:
         return None
     else:
-        temp = int(tempd['value'])/10.24
-        return temp
+        tempc = int(tempd['value'])/10.24
+        return tempc
 
 temp_history=[]
 
@@ -58,7 +61,6 @@ while True:
         temp = get_temp()
         if not temp:
             print("Request unsucessfull!")
-            break
         print(temp)
         thresholds = set_threshold()
         if not thresholds:
@@ -77,5 +79,6 @@ while True:
         print(thresholds[0],thresholds[1])
     except Exception as e:
         print(e)
-        break
-    time.sleep(10)
+
+#def get_status():
+    #return online, temp, open
