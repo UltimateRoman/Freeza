@@ -52,7 +52,7 @@ def is_open(temp, thresholds):
     else:
         return False
 
-while True:
+def bolt_main():
     try:
         online = device_status()
         if not online:
@@ -80,5 +80,5 @@ while True:
     except Exception as e:
         print(e)
 
-#def get_status():
-    #return online, temp, open
+def get_status():
+    return [online, temp, open]
